@@ -2,24 +2,37 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <div>
-      <nav className="flex items-center justify-between h-20 max-w-6xl mx-auto">
-        <Link to={"/"}>
-          <div className="ml-5">
-            <h1 className="text-red-900 font-bold text-xl sm:text-2xl md:text-3xl cursor-pointer tracking-wide">
-              REACT REDUX SHOPPING CART
-            </h1>
-          </div>
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm backdrop-blur-sm">
+      <nav className="flex items-center justify-between h-16 max-w-7xl mx-auto px-6">
+        <Link
+          to={"/"}
+          className="group flex items-center gap-3 hover:scale-105 transition-transform duration-300"
+        >
+          <div className="text-3xl">🛍️</div>
+          <h1 className="text-red-800 font-extrabold text-xl sm:text-2xl md:text-3xl cursor-pointer tracking-tight">
+            ShopCart
+          </h1>
         </Link>
-        <ul className="flex list-none items-center space-x-6 text-gray-800 font-semibold">
-          <Link to={"/"}>
-            <li className="cursor-pointer list-none">Home</li>
-          </Link>
-          <Link to={"/cart"}>
-            <li className="cursor-pointer">Cart</li>
-          </Link>
+
+        <ul className="flex items-center space-x-6">
+          <li>
+            <Link
+              to={"/"}
+              className="px-4 py-2 text-gray-600 font-medium hover:text-gray-900 transition-colors duration-200"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/cart"}
+              className="px-6 py-2 bg-red-800 hover:bg-red-900 text-white font-medium rounded-lg transition-colors duration-200"
+            >
+              Cart
+            </Link>
+          </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 }

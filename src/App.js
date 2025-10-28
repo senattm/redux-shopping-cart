@@ -7,7 +7,7 @@ import Header from "./components/header";
 function App() {
   return (
     <div>
-      <Header/>
+      <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />

@@ -12,35 +12,45 @@ export default function ProductTile({ product }) {
   function handleRemoveFromCart() {
     dispatch(removeFromCart(product.id));
   }
+  const isInCart = cart.some((item) => item.id === product.id);
+
   return (
-    <div>
-      <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[360px] mt-10 ml-5 rounded-xl">
-        <div className="h-[180px]">
-          <img
-            src={product?.image}
-            alt={product?.title}
-            className="object-cover h-full w-full"
-          />
+    <div className="group relative bg-white border border-gray-200 hover:border-gray-300 rounded-xl p-5 h-[380px] w-full max-w-[240px] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+      <div className="absolute top-4 right-4 bg-gray-800 text-white px-3 py-1 rounded-lg font-medium text-sm shadow-sm z-10">
+        ${product?.price}
+      </div>
+
+      {isInCart && (
+        <div className="absolute top-4 left-4 bg-green-100 text-green-700 border border-green-200 px-3 py-1 rounded-lg font-medium text-xs z-10">
+          ✓ IN CART
         </div>
-        <div>
-          <h1 className="w-40 truncate mt-3 text-gray-700 font-bold text-lg">
-            {product?.title}
-          </h1>
-        </div>
-        <div className="flex items-center justify-center w-full mt-5">
-          <button
-            onClick={
-              cart.some((item) => item.id === product.id)
-                ? handleRemoveFromCart
-                : handleAddToCart
-            }
-            className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
-          >
-            {cart.some((item) => item.id === product.id)
-              ? "Remove from cart"
-              : "Add to cart"}
-          </button>
-        </div>
+      )}
+
+      <div className="relative h-[160px] mb-5 rounded-lg overflow-hidden bg-white p-4">
+        <img
+          src={product?.image}
+          alt={product?.title}
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+        />
+      </div>
+
+      <div className="mb-5 h-[50px] flex items-center justify-center">
+        <h1 className="text-gray-800 font-semibold text-base leading-tight text-center line-clamp-2 group-hover:text-gray-900 transition-colors duration-300">
+          {product?.title}
+        </h1>
+      </div>
+
+      <div className="absolute bottom-5 left-5 right-5">
+        <button
+          onClick={isInCart ? handleRemoveFromCart : handleAddToCart}
+          className={`w-full py-3 px-5 rounded-lg font-medium text-sm transition-all duration-200 ${
+            isInCart
+              ? "bg-red-900 hover:bg-red-800 text-white shadow-sm"
+              : "bg-red-800 hover:bg-red-900 text-white shadow-sm"
+          }`}
+        >
+          {isInCart ? "Remove from cart" : "Add to cart"}
+        </button>
       </div>
     </div>
   );
