@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm backdrop-blur-sm">
+    <header className="sticky bg-white top-0 z-50 border-b border-gray-200 shadow-sm p-2">
       <nav className="flex items-center justify-between h-16 max-w-7xl mx-auto px-6">
         <Link
           to={"/"}
           className="group flex items-center gap-3 hover:scale-105 transition-transform duration-300"
         >
-          <div className="text-3xl">🛍️</div>
-          <h1 className="text-red-800 font-extrabold text-xl sm:text-2xl md:text-3xl cursor-pointer tracking-tight">
-            ShopCart
+          <div className="text-4xl">🛍️</div>
+          <h1 className="text-red-800 font-extrabold text-2xl sm:text-2xl md:text-3xl cursor-pointer">
+            MyCart
           </h1>
         </Link>
 

@@ -9,10 +9,8 @@ export default function Cart() {
   const { cart } = useSelector((state) => state);
 
   useEffect(() => {
-    setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0));
+    setTotalCart(cart.reduce((total, curr) => total + curr.price, 0));
   }, [cart]);
-
-  console.log(cart, totalCart);
 
   return (
     <div className="min-h-screen bg-gray-50">

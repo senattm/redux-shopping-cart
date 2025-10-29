@@ -33,7 +33,7 @@ export default function Home() {
           />
         </div>
       ) : (
-        <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 max-w-6xl mx-auto p-3">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 max-w-7xl mx-auto p-8">
           {products && products.length
             ? products.map((productItem) => (
                 <ProductTile product={productItem} />
